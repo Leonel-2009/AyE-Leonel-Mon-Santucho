@@ -74,7 +74,7 @@ void ejercicio3()
 
     int n = Convert.ToInt16(Console.ReadLine());
 
-    int[,] matriz = new int[n, n];
+    int[,] m = new int[n, n];
 
     for (int fila = 0; fila < n; fila++)
     {
@@ -82,11 +82,11 @@ void ejercicio3()
         {
             if (fila == columna)
             {
-                matriz[fila, columna] = 1;
+                m[fila, columna] = 1;
             }
             else
             {
-                matriz[fila, columna] = 0;
+                m[fila, columna] = 0;
             }
         }
     }
@@ -99,7 +99,7 @@ void ejercicio3()
     {
         for (int columna = 0; columna < n; columna++)
         {
-            Console.Write(matriz[fila, columna] + " ");
+            Console.Write(m[fila, columna] + " ");
         }
 
         Console.WriteLine();
