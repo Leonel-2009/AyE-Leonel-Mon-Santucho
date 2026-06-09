@@ -14,24 +14,24 @@ Random random = new Random();
 
 int intentos = 5;
 int tesorosDescubiertos = 0;
+int colocados = 0;
 
 for (int i = 0; i < 10; i++)
 {
     for (int j = 0; j < 10; j++)
     {
-        matriz[i, j] = "Nada";
+        matriz[i, j] = "No encontrado";
     }
 }
 
-int colocados = 0;
 while (colocados < 3)
 {
     int x = random.Next(0, 10);
     int y = random.Next(0, 10);
 
-    if (matriz[x, y] != "Tesoro")
+    if (matriz[x, y] != "Tesoro encontrado")
     {
-        matriz[x, y] = "Tesoro";
+        matriz[x, y] = "Tesoro encontrado";
         colocados++;
     }
 }
@@ -47,6 +47,7 @@ void MostrarMapa(bool mostrarTesoros = false)
         for (int j = 0; j < 10; j++)
         {
             string c;
+            
             if (matriz[i, j] == "Encontrado")
             {
                 c = "E";
