@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.Design;
 
-Console.WriteLine("Programa N°7:");
+Console.WriteLine("Programa N°8:");
 Console.WriteLine("");
 Console.WriteLine("-----BALATRO-----");
 Console.WriteLine("Version Alpha xd");
