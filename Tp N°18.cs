@@ -76,7 +76,13 @@ namespace ConsoleApp15
             Console.WriteLine("");
             Console.WriteLine("Ejercicio 2");
             Console.WriteLine("");
-
+            
+            //¿Por qué el ancho de d1 no cambió a 99?
+            
+            //El ancho de d1 no cambia a 99 porque los structs son tipos de valor (conocidos como "value types"). 
+            //Al hacer "Dimensiones d2 = d1", no se crea una referencia al objeto original, sino que se realiza una copia completa y exacta de todos los datos de d1 en una nueva posición de memoria asignada a d2.
+            //Como ambas variables son totalmente independientes en la memoria, cualquier modificación en los campos o propiedades de d2 no afecta en absoluto a d1.
+            
             Dimensiones d1 = new Dimensiones(10, 20);
             Dimensiones d2 = d1;
             d2 = new Dimensiones(99, 20);
