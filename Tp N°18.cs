@@ -113,13 +113,23 @@ namespace ConsoleApp15
             Console.WriteLine("");
 
             Estudiante alumno = new Estudiante();
+            Estudiante alumno2 = new Estudiante();
+            Estudiante alumno3 = new Estudiante();
 
             alumno.nombreAlumno = "Pablo Sornia";
-            alumno.notas = new double[] {9, 8.75, 8};
+            alumno.notas = new double[] { 9, 8.75, 8 };
+            alumno2.nombreAlumno = "Menzo Benavidez";
+            alumno2.notas = new double[] { 9, 7, 8 };
+            alumno3.nombreAlumno = "Pablo Sornia";
+            alumno3.notas = new double[] { 7, 7.5, 7 };
 
             double promedio = alumno.CalcularPromedio();
+            double promedio2 = alumno2.CalcularPromedio();
+            double promedio3 = alumno3.CalcularPromedio();
 
             Console.WriteLine($"Estudiante: {alumno.nombreAlumno} | Promedio: {promedio}");
+            Console.WriteLine($"Estudiante: {alumno2.nombreAlumno} | Promedio: {promedio2}");
+            Console.WriteLine($"Estudiante: {alumno3.nombreAlumno} | Promedio: {promedio3}");
         }
     }
 }
