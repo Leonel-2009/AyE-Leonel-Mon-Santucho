@@ -3,18 +3,50 @@ using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Timers;
 
-ejercicio1();
-ejercicio2();
-ejercicio3();
-ejercicio4();
-ejercicio5();
-ejercicio6();
-ejercicio7();
-ejercicio8();
-ejercicio9();
-ejercicio10();
-ejercicio11();
+Console.WriteLine("---TP N°12 Primera parte---");
+Console.WriteLine("Elija del 1 al 11");
 
+int opcion = int.Parse(Console.ReadLine());
+
+switch (opcion)
+{
+    case 1:
+        ejercicio1();
+        break;
+    case 2:
+        ejercicio2();
+        break;
+    case 3:
+        ejercicio3();
+        break;
+    case 4:
+        ejercicio4();
+        break;
+    case 5:
+        ejercicio5();
+        break;
+    case 6:
+        ejercicio6();
+        break;
+    case 7:
+        ejercicio7();
+        break;
+    case 8:
+        ejercicio8();
+        break;
+    case 9:
+        ejercicio9();
+        break;
+    case 10:
+        ejercicio10();
+        break;
+    case 11:
+        ejercicio11();
+        break;
+    default:
+        Console.WriteLine("Opción invalida");
+        break;
+}
 void ejercicio1()
 {
     Console.WriteLine("----Ejercicio 1----");
