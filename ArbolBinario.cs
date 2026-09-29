@@ -58,8 +58,8 @@ namespace BB_en_BDD
                 if(id == actual.Pokemon.ID)
                 {
                     return actual.Pokemon;
-                }
-
+                }    
+    
                 if(id < actual.Pokemon.ID)
                 {
                     actual = actual.Izquierda;
@@ -70,6 +70,11 @@ namespace BB_en_BDD
                 }
             }
             return null;
+        }
+
+        public void Limpiar()
+        {
+            raiz = null;
         }
     }
 }
