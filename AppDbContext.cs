@@ -9,7 +9,7 @@ namespace BB_en_BDD
 {
     internal class AppDbContext : DbContext
     {
-        public DbSet<Pokemon> Pokemon => Set<Pokemon>();
+        public DbSet<Pokemon> pokemon => Set<Pokemon>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
