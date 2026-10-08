@@ -11,7 +11,8 @@ namespace BusquedasyOrdenamientos
             int[] vector = [42, 17, 8, 31, 23, 5, 49, 14, 38, 26, 45, 11, 29, 3, 20, 36, 12, 47, 34, 1, 25, 40, 9, 33, 22, 16, 50, 7, 28, 44, 19, 43, 4, 37, 13, 24, 46, 30, 2, 35, 18, 41, 15, 6, 21, 32, 48, 10, 39, 27];
             int[] vector_C = [42, 17, 8, 31, 23, 5, 49, 14, 38, 26, 45, 11, 29, 3, 20, 36, 12, 47, 34, 1, 25, 40, 9, 33, 22, 16, 50, 7, 28, 44, 19, 43, 4, 37, 13, 24, 46, 30, 2, 35, 18, 41, 15, 6, 21, 32, 48, 10, 39, 27];
 
-            Mostrar(vector);
+            Console.Write("Vector: ");
+            Mostrar(vector_C);
             Console.WriteLine("");
 
             int menu;
@@ -77,7 +78,7 @@ namespace BusquedasyOrdenamientos
                         Console.WriteLine("¿Que numero está buscando?");
                         int busqueda4 = int.Parse(Console.ReadLine());
                         int lugar4 = BusquedaBinariaRecursiva(vector_C, busqueda4, 0, vector.Length - 1);
-                        if (lugar4 != 0 )
+                        if (lugar4 != 0)
                         {
                             Console.WriteLine("Número encontrado");
                         }
@@ -145,8 +146,8 @@ namespace BusquedasyOrdenamientos
                         break;
                     case 6:
                         Console.Write("Ordenamineto Stanlin: ");
-                        int cant = Stanlin(vector);
-                        for(int f = 0; f < cant; f++)
+                        int cant = Stalin(vector);
+                        for (int f = 0; f < cant; f++)
                         {
                             Console.Write($"{vector[f] + ""} ");
                         }
@@ -179,7 +180,15 @@ namespace BusquedasyOrdenamientos
             }
         }
 
-        //Busquedas
+        //Busquedas Simple
+        //Explicación:Recorre la lista elemento por elemento desde el principio hasta el final, comparando cada uno con el valor buscado.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de búsqueda?
+        // No se necesita cumplir ninguna condición, la lista puede estar desordenada y funcionar perfectamente.
+
+        //¿Que complejidad algorítmica tiene Busqueda Simple?
+        //Tiene la complejidad de O(n) - Lineal. En el peor caso recorre toda la lista. 
+
         static int BusquedaSimple(int[] lista, int busqueda)
         {
 
@@ -193,6 +202,15 @@ namespace BusquedasyOrdenamientos
 
             return 0;
         }
+
+        //Busquedas Optimizada
+        //Explicación:Recorre la lista elemento por elemento desde el principio hasta el final, pero se detiene si encuentra un número más grande que el buscado.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de búsqueda?
+        //La lista debe estar ordenada si queremos que funcione correctamente la busqueda.
+
+        //¿Que complejidad algorítmica tiene Busqueda Optimizada?
+        //Tiene la complejidad de O(n) - Lineal. En el peor caso recorre toda la lista pero reduce algunos pasos. 
         static int BusquedaOptimizada(int[] lista, int busqueda)
         {
             for (int x = 0; x < lista.Length; x++)
@@ -210,6 +228,15 @@ namespace BusquedasyOrdenamientos
 
             return 0;
         }
+
+        //Busquedas Binaria (Iterativa)
+        //Explicación:Divide repetidamente el rango de búsqueda a la mitad, comparando el elemento central con el valor buscado.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de búsqueda?
+        // La lista debe estar ordenada si o si, sino no funcionará la busqueda.
+
+        //¿Que complejidad algorítmica tiene Busqueda Binaria Iterativa?
+        //Tinene la complejidad de O(log n) - Logarítmica. Es sumamente eficiente. 
         static int BusquedaBinariaIterativa(int[] lista, int busqueda)
         {
             int inicio = 0;
@@ -236,6 +263,15 @@ namespace BusquedasyOrdenamientos
 
             return 0;
         }
+
+        //Busquedas Binaria (Recursiva)
+        //Explicación: Misma función que la Busqueda Binaria Iterativa, pero se llama a sí misma reduciendo los límites (izquierda y derecha) en cada ejecución.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de búsqueda?
+        //Debe estar ordenada si o si, sino no funciona la busqueda
+
+        //¿Que complejidad algorítmica tiene Busqueda Binaria Recursiva?
+        //Tinene la complejidad de O(log n) - Logarítmica (usa espacio en memoria O(log n) por la pila de llamadas).
         static int BusquedaBinariaRecursiva(int[] lista, int busqueda, int inicio, int fin)
         {
             if (inicio > fin)
@@ -260,7 +296,17 @@ namespace BusquedasyOrdenamientos
             }
         }
 
+
         //Ordenamientos
+
+        //Ordenamineto Burbuja Simple
+        //Explicación: Compara parejas de elementos adyacentes y los intercambia si están en el orden incorrecto, repitiendo esto para toda la lista n veces.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de ordenamiento?
+        //Ninguna condición, puede funcionar en cualquier lista.
+
+        //¿Que complejidad algorítmica tiene Ordenamiento Burbuja Simple?
+        //Tiene la complejidad de O(n²) - Cuadrática. Siempre ejecuta todos los bucles.
         static void Ord_Burbuja(int[] lista)
         {
             for (int x = 0; x < lista.Length - 1; x++)
@@ -276,6 +322,17 @@ namespace BusquedasyOrdenamientos
                 }
             }
         }
+
+
+
+        //Ordenamineto Burbuja Optimizada
+        //Explicación: Compara parejas de elementos adyacentes y los intercambia si están en el orden incorrecto, repitiendo esto para toda la lista n veces.
+
+        //¿Qué condiciones se deben cumplir para utilizar este tipo de ordenamiento?
+        //Ninguna condición, funciona sobre cualquier lista desordenada.
+
+        //¿Qué complejidad algorítmica tiene el Ordenamiento Burbuja Optimizada?
+        //Tiene la complejidad de O(n²) en el peor caso, pero O(n) si la lista ya está ordenada.
         static void Ord_Burbuja_Opti(int[] lista)
         {
             bool intercambio;
@@ -296,19 +353,30 @@ namespace BusquedasyOrdenamientos
                     }
                 }
 
-                if(intercambio == false)
+                if (intercambio == false)
                 {
                     break;
                 }
             }
         }
+
+
+
+        //Ordenamineto Selección
+        //Explicación: Busca el elemento más pequeño de la lista y lo intercambia con el elemento de la primera posición, repitiendo para el resto de la lista.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de ordenamiento?
+        //Ninguna condición, funciona con cualquier lista rellena con datos comparables.
+
+        //¿Que complejidad algorítmica tiene Ordenamiento Selección?
+        //Tiene la complejidad O(n²) - Cuadrática. Siempre busca el mínimo en el resto de la lista.
         static void Seleccion(int[] lista)
         {
-            for(int x = 0; x < lista.Length - 1; x++)
+            for (int x = 0; x < lista.Length - 1; x++)
             {
                 int Pos = x;
 
-                for(int i = x + 1; i < lista.Length; i++)
+                for (int i = x + 1; i < lista.Length; i++)
                 {
                     if (lista[i] < lista[Pos])
                     {
@@ -321,6 +389,16 @@ namespace BusquedasyOrdenamientos
                 lista[Pos] = aux;
             }
         }
+
+
+        //Ordenamineto Inserción
+        //Explicación: Compara parejas de elementos adyacentes y los intercambia si están en el orden incorrecto, repitiendo esto para toda la lista n veces.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de ordenamiento?
+        //Ninguna. Es muy eficiente para listas que ya están casi ordenadas.
+
+        //¿Que complejidad algorítmica tiene Ordenamiento Inserción?
+        //Tiene la complejidad O(n²) - Cuadrática en el peor caso; O(n) en el mejor caso.
         static void Insercion(int[] lista)
         {
             for (int x = 1; x < lista.Length; x++)
@@ -328,7 +406,7 @@ namespace BusquedasyOrdenamientos
                 int actual = lista[x];
                 int i = x - 1;
 
-                while(i >= 0 && lista[i] > actual)
+                while (i >= 0 && lista[i] > actual)
                 {
                     lista[i + 1] = lista[i];
                     i--;
@@ -338,9 +416,19 @@ namespace BusquedasyOrdenamientos
             }
         }
 
+
+
+        //Ordenamineto QuickSort
+        //Explicación: Elige un elemento como "pivote" y divide la lista moviendo los menores a la izquierda y los mayores a la derecha. Luego se aplica recursivamente.
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de ordenamiento?
+        //Ninguna condición, trabaja sobre la estructura interna usando índices..
+
+        //¿Que complejidad algorítmica tiene Ordenamiento QuickSort?
+        //Tiene la complejidad O(n log n) en promedio. O(n²) en el peor de los casos (pivote muy malo).
         static void QuickSort(int[] lista, int inicio, int fin)
         {
-            if(inicio < fin)
+            if (inicio < fin)
             {
                 int Pos = Particion(lista, inicio, fin);
 
@@ -354,9 +442,9 @@ namespace BusquedasyOrdenamientos
 
             int i = inicio - 1;
 
-            for(int x = inicio; x < fin; x++)
+            for (int x = inicio; x < fin; x++)
             {
-                if (lista[x] < piv)
+                if (lista[x] >= piv)
                 {
                     i++;
 
@@ -373,16 +461,26 @@ namespace BusquedasyOrdenamientos
             return i + 1;
         }
 
-        static int Stanlin(int[] lista)
+        //Ordenamineto Stalin
+        //Explicación: Un ordenamiento satírico. Recorre la lista y elimina ("liquida") cualquier elemento que rompa el orden ascendente respecto al máximo actual.
+
+
+        //¿Que condiciones se deben de cumplir para poder utilizar ese tipo de ordenamiento?
+        //Ninguna condición, pero destruye datos. La lista resultante estará ordenada, pero incompleta.
+
+        //¿Que complejidad algorítmica tiene Ordenamiento Stalin?
+        //Tiene la complejidad O(n) - Lineal. Pasa solo una vez por la lista.
+        static int Stalin(int[] lista)
         {
             int cant = lista.Length;
             int i = 0;
+            int M_Actual = lista[0];
 
             while (i < cant - 1)
             {
-                if (lista[i + 1] > lista[i])
+                if (lista[i + 1] < M_Actual)
                 {
-                    for(int x = i + 1; x < cant - 1; x++)
+                    for (int x = i + 1; x < cant - 1; x++)
                     {
                         lista[x] = lista[x + 1];
                     }
@@ -391,6 +489,7 @@ namespace BusquedasyOrdenamientos
                 }
                 else
                 {
+                    M_Actual = lista[i + 1];
                     i++;
                 }
             }
@@ -398,11 +497,23 @@ namespace BusquedasyOrdenamientos
             return cant;
         }
 
+        //Ordenamiento BogoSort
+        //Explicación:Algoritmo humorístico sumamente ineficiente.Desordena aleatoriamente la lista (Permutación)
+        //y luego verifica si está ordenada.Si no lo está, repite el proceso infinitamente hasta apuntarle al orden por puro azar.Es el equivalente a ordenar un mazo de cartas tirándolo al aire, recogiéndolo y revisando si quedó ordenado.
+      
+        //¿Qué condiciones se deben cumplir?
+        //Ninguna condición previa en la estructura de la lista. Sin embargo, como condición práctica de rendimiento, el tamaño de la lista debe ser extremadamente pequeño
+        //(menos de 6 u 8 elementos), de lo contrario la computadora tardará años o incluso una eternidad en terminar.
+     
+        //¿Qué complejidad algorítmica tiene Ordenamiento BogoSort?: 
+        //Caso promedio: O(n* n!) debido a la cantidad exponencial de permutaciones posibles.
+        //Peor caso: O(∞) (Infinito), ya que al ser aleatorio podría no acertar nunca a la combinación correcta.
+        //Mejor caso: O(n), si la lista ya ingresa ordenada de antemano y solo se verifica una vez.
         static int BogoSort(int[] lista)
         {
             Random aleatorio = new Random();
             int cont = 0;
-            while (!ordenado(lista))
+            while (!Ordenado(lista))
             {
                 Random(lista, aleatorio);
                 cont++;
@@ -421,9 +532,9 @@ namespace BusquedasyOrdenamientos
             }
 
         }
-        static bool ordenado(int[] lista)
+        static bool Ordenado(int[] lista)
         {
-            for(int x = 0; x < lista.Length - 1; x++)
+            for (int x = 0; x < lista.Length - 1; x++)
             {
                 if (lista[x] > lista[x + 1])
                 {
@@ -434,5 +545,6 @@ namespace BusquedasyOrdenamientos
             return true;
         }
     }
+
 }
 
