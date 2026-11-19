@@ -309,54 +309,46 @@ namespace ConsoleApp2
 
         static ArbolBinario arbol = new ArbolBinario();
 
-        static void CrearArbol()
+       Console.WriteLine("CREAR ARBOL");
+        arbol.Limpiar();
+
+        using var db = new AppDbContext();
         {
-            Console.WriteLine("CREAR ARBOL");
+            List<Pokemon> pokemons = db.pokemon.OrderBy(p => p.ID).ToList();
 
-            arbol.Limpiar();
+            // ----------------------- JSON ------------------------
+            var opciones = new JsonSerializerOptions 
+            { 
+                WriteIndented = true,
+                ReferenceHandler = ReferenceHandler.IgnoreCycles 
+            };
 
-            using var db = new AppDbContext();
+            string rutaArchivo = "Pokemon.json";
+            string jsonTexto = JsonSerializer.Serialize(pokemons, opciones);
+            File.WriteAllText(rutaArchivo, jsonTexto);
 
+            if (File.Exists(rutaArchivo))
             {
-                List<Pokemon> pokemons = db.pokemon.OrderBy(p => p.ID).ToList();
+                string contenidoJson = File.ReadAllText(rutaArchivo);
+                var opcionesLectura = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
+                List<Pokemon>? pokemonesDesdeJson = JsonSerializer.Deserialize<List<Pokemon>>(contenidoJson, opcionesLectura);
 
-                //-----------------------JSON------------------------
-
-                var opciones = new JsonSerializerOptions
+                Console.WriteLine();
+                if (pokemonesDesdeJson != null)
                 {
-                    WriteIndented = true
-                };
-                string jsonTexto = JsonSerializer.Serialize(pokemons, opciones);
-
-                string rutaArchivo = "Pokemon.json";
-                File.WriteAllText(rutaArchivo, jsonTexto);
-
-                string ruta = "Pokemon.json";
-
-                if (File.Exists(ruta))
-                {
-                    string contenidoJson = File.ReadAllText(ruta);
-
-                    // 2. Opciones de deserialización (ej. ignorar mayúsculas/minúsculas)
-                    var opciones2 = new JsonSerializerOptions
+                    foreach (var p in pokemonesDesdeJson)
                     {
-                        PropertyNameCaseInsensitive = true
-                    };
-
-                    // 3. Convertir de JSON a objeto de C#
-                    List<Pokemon>? pokemones = JsonSerializer.Deserialize<List<Pokemon>>(contenidoJson, opciones2);
-
-                    Console.WriteLine();
-
-                    if (pokemones != null)
-                    {
-                        foreach (var p in pokemones)
-                        {
-                            p.Mostrar();
-                        }
+                        p.Mostrar();
+                        arbol.Insertar(p); 
                     }
                 }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Archivo JSON creado correctamente en: {Path.GetFullPath(rutaArchivo)}");
+            Console.WriteLine("Arbol creado correctamente.");
+            Console.WriteLine("Pokemon cargados: " + pokemons.Count);
 
                 foreach (Pokemon pokemon in pokemons)
                 {
